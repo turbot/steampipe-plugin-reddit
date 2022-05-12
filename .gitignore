@@ -13,3 +13,16 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+
+# Ignore JetBrains files
+.idea
+
+# Ignore swap files
+*.swo
+*.swp
+
+# Ignore node dependencies
+node_modules
+
+# Ignore file types
+.vscode/launch.json
