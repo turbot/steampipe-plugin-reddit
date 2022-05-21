@@ -16,8 +16,10 @@ func tableRedditUserSearch(ctx context.Context) *plugin.Table {
 		// Allow for 0 counts
 		DefaultTransform: transform.FromJSONTag(),
 		List: &plugin.ListConfig{
-			Hydrate:    listUserSearch,
-			KeyColumns: plugin.SingleColumn("query"),
+			Hydrate: listUserSearch,
+			KeyColumns: []*plugin.KeyColumn{
+				{Name: "query", CacheMatch: "exact"},
+			},
 		},
 		Columns: []*plugin.Column{
 			// Top columns

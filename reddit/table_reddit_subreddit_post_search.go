@@ -16,8 +16,11 @@ func tableRedditSubredditPostSearch(ctx context.Context) *plugin.Table {
 		// Allow for 0 counts
 		DefaultTransform: transform.FromJSONTag(),
 		List: &plugin.ListConfig{
-			Hydrate:    listSubredditPostSearch,
-			KeyColumns: plugin.AllColumns([]string{"query", "subreddit"}),
+			Hydrate: listSubredditPostSearch,
+			KeyColumns: []*plugin.KeyColumn{
+				{Name: "subreddit"},
+				{Name: "query", CacheMatch: "exact"},
+			},
 		},
 		Columns: []*plugin.Column{
 			// Top columns
