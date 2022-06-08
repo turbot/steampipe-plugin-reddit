@@ -15,7 +15,7 @@ from
   reddit_my_comment
 order by
   created_utc desc
-limit 5
+limit 5;
 ```
 
 ### Top 5 comments by score
@@ -30,7 +30,7 @@ from
   reddit_my_comment
 order by
   score desc
-limit 5
+limit 5;
 ```
 
 ### Comments by subreddit
@@ -44,7 +44,7 @@ from
 group by
   subreddit_name_prefixed
 order by
-  count desc
+  count desc;
 ```
 
 ### Comments containing the word "docs"
@@ -59,5 +59,5 @@ from
 where
   body ilike '%docs%'
 order by
-  created_utc
+  created_utc;
 ```

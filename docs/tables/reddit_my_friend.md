@@ -13,5 +13,5 @@ select
 from
   reddit_my_friend
 order by
-  name
+  name;
 ```

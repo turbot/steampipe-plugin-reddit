@@ -18,7 +18,7 @@ from
 where
   subreddit = 'aws'
 order by
-  name
+  name;
 ```
 
 ### List moderators with "all" permission
@@ -33,5 +33,5 @@ where
   subreddit = 'aws'
   and mod_permissions ? 'all'
 order by
-  name
+  name;
 ```

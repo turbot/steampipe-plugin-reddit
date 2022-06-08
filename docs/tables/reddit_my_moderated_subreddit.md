@@ -14,7 +14,7 @@ select
 from
   reddit_my_moderated_subreddit
 order by
-  display_name_prefixed
+  display_name_prefixed;
 ```
 
 ### Top 5 moderated subreddits by popularity
@@ -28,5 +28,5 @@ from
   reddit_my_moderated_subreddit
 order by
   subscribers desc
-limit 5
+limit 5;
 ```
