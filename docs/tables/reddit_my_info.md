@@ -15,5 +15,5 @@ select
 from
   reddit_user_search
 where
-  query = 'steampipeio'
+  query = 'steampipeio';
 ```

@@ -15,5 +15,5 @@ select
 from
   reddit_user
 where
-  name = 'steampipeio'
+  name = 'steampipeio';
 ```

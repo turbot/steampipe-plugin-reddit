@@ -22,5 +22,5 @@ where
   subreddit = 'aws'
   and query = 'steampipe'
 order by
-  rank
+  rank;
 ```

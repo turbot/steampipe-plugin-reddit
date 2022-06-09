@@ -17,5 +17,5 @@ from
 where
   query = 'jane'
 order by
-  rank
+  rank;
 ```

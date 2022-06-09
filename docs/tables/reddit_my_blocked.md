@@ -13,7 +13,7 @@ select
 from
   reddit_my_blocked
 order by
-  name
+  name;
 ```
 
 ### Last 5 users you blocked
@@ -26,5 +26,5 @@ from
   reddit_my_blocked
 order by
   date desc
-limit 5
+limit 5;
 ```

@@ -29,19 +29,17 @@ func connect(ctx context.Context, d *plugin.QueryData) (*reddit.Client, error) {
 
 	// But prefer the config
 	redditConfig := GetConfig(d.Connection)
-	if &redditConfig != nil {
-		if redditConfig.ClientID != nil {
-			clientID = *redditConfig.ClientID
-		}
-		if redditConfig.ClientSecret != nil {
-			clientSecret = *redditConfig.ClientSecret
-		}
-		if redditConfig.Username != nil {
-			username = *redditConfig.Username
-		}
-		if redditConfig.Password != nil {
-			password = *redditConfig.Password
-		}
+	if redditConfig.ClientID != nil {
+		clientID = *redditConfig.ClientID
+	}
+	if redditConfig.ClientSecret != nil {
+		clientSecret = *redditConfig.ClientSecret
+	}
+	if redditConfig.Username != nil {
+		username = *redditConfig.Username
+	}
+	if redditConfig.Password != nil {
+		password = *redditConfig.Password
 	}
 
 	if clientID == "" || clientSecret == "" || username == "" || password == "" {

@@ -15,7 +15,7 @@ from
   reddit_my_post
 order by
   created_utc desc
-limit 5
+limit 5;
 ```
 
 ### Top 5 posts by score
@@ -30,7 +30,7 @@ from
   reddit_my_post
 order by
   score desc
-limit 5
+limit 5;
 ```
 
 ### Posts by subreddit
@@ -44,7 +44,7 @@ from
 group by
   subreddit_name_prefixed
 order by
-  count desc
+  count desc;
 ```
 
 ### Posts containing the word "docs"
@@ -60,5 +60,5 @@ from
 where
   selftext ilike '%docs%'
 order by
-  created_utc
+  created_utc;
 ```

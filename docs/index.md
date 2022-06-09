@@ -27,7 +27,7 @@ select
 from
   reddit_my_post
 order by
-  rank
+  rank;
 ```
 
 ```

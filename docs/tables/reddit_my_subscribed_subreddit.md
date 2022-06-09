@@ -14,7 +14,7 @@ select
 from
   reddit_my_subscribed_subreddit
 order by
-  display_name_prefixed
+  display_name_prefixed;
 ```
 
 ### Top 5 subscribed subreddits by popularity
@@ -28,5 +28,5 @@ from
   reddit_my_subscribed_subreddit
 order by
   subscribers desc
-limit 5
+limit 5;
 ```

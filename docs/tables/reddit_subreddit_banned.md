@@ -21,5 +21,5 @@ from
 where
   subreddit = 'mysubreddit'
 order by
-  name
+  name;
 ```

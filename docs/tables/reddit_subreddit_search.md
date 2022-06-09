@@ -20,5 +20,5 @@ from
 where
   query = 'aws'
 order by
-  rank
+  rank;
 ```

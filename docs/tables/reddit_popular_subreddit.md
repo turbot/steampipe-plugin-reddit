@@ -18,5 +18,5 @@ select
 from
   reddit_popular_subreddit
 order by
-  rank
+  rank;
 ```
