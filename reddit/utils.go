@@ -9,8 +9,8 @@ import (
 
 	"github.com/vartanbeno/go-reddit/v2/reddit"
 
-	"github.com/turbot/steampipe-plugin-sdk/v3/plugin"
-	"github.com/turbot/steampipe-plugin-sdk/v3/plugin/transform"
+	"github.com/turbot/steampipe-plugin-sdk/v4/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v4/plugin/transform"
 )
 
 func connect(ctx context.Context, d *plugin.QueryData) (*reddit.Client, error) {
