@@ -3,7 +3,7 @@ module github.com/turbot/steampipe-plugin-reddit
 go 1.19
 
 require (
-	github.com/turbot/steampipe-plugin-sdk/v4 v4.1.6
+	github.com/turbot/steampipe-plugin-sdk/v4 v4.1.7
 	github.com/vartanbeno/go-reddit/v2 v2.0.1
 )
 
