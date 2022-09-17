@@ -42,12 +42,23 @@ func connect(ctx context.Context, d *plugin.QueryData) (*reddit.Client, error) {
 		password = *redditConfig.Password
 	}
 
-	if clientID == "" || clientSecret == "" || username == "" || password == "" {
-		// Credentials not set
-		return nil, errors.New("client_id, client_secret, username and password must be configured")
+	var accessToken string
+	if redditConfig.AccessToken != nil {
+		accessToken = *redditConfig.AccessToken
 	}
 
-	credentials := reddit.Credentials{ID: clientID, Secret: clientSecret, Username: username, Password: password}
+	var credentials reddit.Credentials
+	if accessToken != "" {
+		credentials = reddit.Credentials{AccessToken: accessToken}
+	} else {
+		if clientID == "" || clientSecret == "" || username == "" || password == "" {
+			// Credentials not set
+			return nil, errors.New("client_id, client_secret, username and password must be configured")
+		}
+
+		credentials = reddit.Credentials{ID: clientID, Secret: clientSecret, Username: username, Password: password}
+	}
+
 	client, err := reddit.NewClient(credentials)
 	if err != nil {
 		return nil, err
@@ -70,5 +81,32 @@ func timeToRfc3339(ctx context.Context, d *transform.TransformData) (interface{}
 			return t.Format(time.RFC3339), nil
 		}
 	}
+	return nil, nil
+}
+
+func getRedditAuthenticatedUser(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) (interface{}, error) {
+
+	// Load connection from cache, which preserves throttling protection etc
+	cacheKey := "reddit.authenticated_user"
+	if cachedData, ok := d.ConnectionManager.Cache.Get(cacheKey); ok {
+		return cachedData.(string), nil
+	}
+
+	conn, err := connect(ctx, d)
+	if err != nil {
+		plugin.Logger(ctx).Error("getRedditAuthenticatedUser", "connection_error", err)
+		return nil, err
+	}
+	user, resp, err := conn.Account.Info(ctx)
+	if err != nil {
+		return nil, err
+	}
+	if resp.StatusCode >= 200 && resp.StatusCode < 400 {
+		// save to extension cache
+		d.ConnectionManager.Cache.Set(cacheKey, user.Name)
+
+		return user.Name, nil
+	}
+
 	return nil, nil
 }
