@@ -10,6 +10,7 @@ type redditConfig struct {
 	ClientSecret *string `cty:"client_secret"`
 	Username     *string `cty:"username"`
 	Password     *string `cty:"password"`
+	AccessToken  *string `cty:"access_token"`
 }
 
 var ConfigSchema = map[string]*schema.Attribute{
@@ -23,6 +24,9 @@ var ConfigSchema = map[string]*schema.Attribute{
 		Type: schema.TypeString,
 	},
 	"password": {
+		Type: schema.TypeString,
+	},
+	"access_token": {
 		Type: schema.TypeString,
 	},
 }
