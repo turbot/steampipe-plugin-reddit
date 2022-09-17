@@ -1,4 +1,10 @@
 
+## v0.1.0 [2022-09-17]
+
+_What's new?_
+
+- Added support for temporary credentials to query tables. ([#11](https://github.com/turbot/steampipe-plugin-reddit/pull/11))
+
 ## v0.0.1 [2022-06-09]
 
 _What's new?_
