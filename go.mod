@@ -2,6 +2,8 @@ module github.com/turbot/steampipe-plugin-reddit
 
 go 1.19
 
+replace github.com/vartanbeno/go-reddit/v2 => github.com/abhiturbot/go-reddit/v2 v2.0.0-20220917030010-f0fe7d8ac15c
+
 require (
 	github.com/turbot/steampipe-plugin-sdk/v4 v4.1.7
 	github.com/vartanbeno/go-reddit/v2 v2.0.1

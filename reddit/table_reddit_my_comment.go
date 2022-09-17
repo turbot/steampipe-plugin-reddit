@@ -60,12 +60,20 @@ type myCommentRow struct {
 	Rank int `json:"rank"`
 }
 
-func listMyComment(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) (interface{}, error) {
+func listMyComment(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (interface{}, error) {
 
 	conn, err := connect(ctx, d)
 	if err != nil {
 		plugin.Logger(ctx).Error("reddit_my_comment.listMyComment", "connection_error", err)
 		return nil, err
+	}
+
+	authUserCached := plugin.HydrateFunc(getRedditAuthenticatedUser).WithCache()
+	commonData, _ := authUserCached(ctx, d, h)
+	authUser := commonData.(string)
+
+	if authUser != "" {
+		conn.Username = authUser
 	}
 
 	opts := &reddit.ListUserOverviewOptions{
