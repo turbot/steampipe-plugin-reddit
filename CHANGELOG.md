@@ -5,6 +5,11 @@ _What's new?_
 
 - Added support for temporary credentials to query tables. ([#11](https://github.com/turbot/steampipe-plugin-reddit/pull/11))
 
+_Dependencies_
+
+- Recompiled plugin with [steampipe-plugin-sdk v4.1.7](https://github.com/turbot/steampipe-plugin-sdk/blob/main/CHANGELOG.md#v417-2022-09-08) which includes several caching and memory management improvements. ([#8](https://github.com/turbot/steampipe-plugin-reddit/pull/8))
+- Recompiled plugin with Go version `1.19`. ([#8](https://github.com/turbot/steampipe-plugin-reddit/pull/8))
+
 ## v0.0.1 [2022-06-09]
 
 _What's new?_
