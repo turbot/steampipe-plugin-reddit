@@ -3,9 +3,9 @@ package reddit
 import (
 	"context"
 
-	"github.com/turbot/steampipe-plugin-sdk/v4/grpc/proto"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin/transform"
+	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
 )
 
 func tableRedditSubredditModerator(ctx context.Context) *plugin.Table {
@@ -38,7 +38,7 @@ func listSubredditModerator(ctx context.Context, d *plugin.QueryData, _ *plugin.
 		return nil, err
 	}
 
-	subreddit := d.KeyColumnQuals["subreddit"].GetStringValue()
+	subreddit := d.EqualsQuals["subreddit"].GetStringValue()
 
 	items, resp, err := conn.Subreddit.Moderators(ctx, subreddit)
 	if err != nil {
