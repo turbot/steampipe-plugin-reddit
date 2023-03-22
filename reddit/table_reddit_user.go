@@ -3,9 +3,9 @@ package reddit
 import (
 	"context"
 
-	"github.com/turbot/steampipe-plugin-sdk/v4/grpc/proto"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin/transform"
+	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
 )
 
 func tableRedditUser(ctx context.Context) *plugin.Table {
@@ -40,7 +40,7 @@ func listUser(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) (
 		return nil, err
 	}
 
-	name := d.KeyColumnQuals["name"].GetStringValue()
+	name := d.EqualsQuals["name"].GetStringValue()
 
 	user, resp, err := conn.User.Get(ctx, name)
 	if resp != nil && resp.StatusCode == 404 {

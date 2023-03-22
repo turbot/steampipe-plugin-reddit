@@ -3,9 +3,9 @@ package reddit
 import (
 	"context"
 
-	"github.com/turbot/steampipe-plugin-sdk/v4/grpc/proto"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin/transform"
+	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
 	"github.com/vartanbeno/go-reddit/v2/reddit"
 )
 
@@ -60,7 +60,7 @@ func listSubredditSearch(ctx context.Context, d *plugin.QueryData, _ *plugin.Hyd
 		return nil, err
 	}
 
-	query := d.KeyColumnQuals["query"].GetStringValue()
+	query := d.EqualsQuals["query"].GetStringValue()
 
 	opts := &reddit.ListSubredditOptions{
 		ListOptions: reddit.ListOptions{

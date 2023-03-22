@@ -5,9 +5,9 @@ import (
 
 	"github.com/vartanbeno/go-reddit/v2/reddit"
 
-	"github.com/turbot/steampipe-plugin-sdk/v4/grpc/proto"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin/transform"
+	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
 )
 
 func tableRedditSubredditBanned(ctx context.Context) *plugin.Table {
@@ -40,7 +40,7 @@ func listSubredditBanned(ctx context.Context, d *plugin.QueryData, _ *plugin.Hyd
 		return nil, err
 	}
 
-	subreddit := d.KeyColumnQuals["subreddit"].GetStringValue()
+	subreddit := d.EqualsQuals["subreddit"].GetStringValue()
 
 	opts := &reddit.ListOptions{
 		Limit: 100,
