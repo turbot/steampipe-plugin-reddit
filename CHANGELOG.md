@@ -1,3 +1,9 @@
+## v0.2.1 [2023-05-19]
+
+_Bug fixes_
+
+- Added the missing `plugin` config argument to the example connection config in `docs/index.md` file. ([#17](https://github.com/turbot/steampipe-plugin-reddit/pull/17))
+
 ## v0.2.0 [2023-03-23]
 
 _Dependencies_
