@@ -62,6 +62,8 @@ Installing the latest reddit plugin will create a config file (`~/.steampipe/con
 
 ```hcl
 connection "reddit" {
+  plugin        = "reddit"
+
   client_id     = "aoxJBaKh9W_wnNLKzJhxSw"
   client_secret = "P51-fNlprSkGcqdkQzogJ_noqcktis"
   username      = "jane"
