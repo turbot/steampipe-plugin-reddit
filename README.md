@@ -6,7 +6,7 @@ Use SQL to query users, posts, votes and more from [Reddit](https://reddit.com).
 
 * **[Get started →](https://hub.steampipe.io/plugins/turbot/reddit)**
 * Documentation: [Table definitions & examples](https://hub.steampipe.io/plugins/turbot/reddit/tables)
-* Community: [Slack Channel](https://steampipe.io/community/join)
+* Community: [Join #steampipe on Slack →](https://turbot.com/community/join)
 * Get involved: [Issues](https://github.com/turbot/steampipe-plugin-reddit/issues)
 
 ## Quick start
