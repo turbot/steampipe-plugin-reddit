@@ -11,6 +11,9 @@ Reddit Subreddit Search is a feature within Reddit that allows you to search for
 
 The `reddit_subreddit_search` table provides insights into Subreddit Search within Reddit. As a data analyst, explore subreddit-specific details through this table, including subreddit names, descriptions, and associated metadata. Utilize it to uncover information about subreddits, such as those with a high number of subscribers, the most discussed topics, and the overall popularity of a subreddit.
 
+**Important Notes**
+- You must specify the `query` in the `where` clause to query this table.
+
 ## Examples
 
 ### Search subreddits with query "aws"

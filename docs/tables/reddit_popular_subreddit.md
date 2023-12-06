@@ -11,6 +11,9 @@ Popular Subreddits on Reddit are the most active and trending communities that a
 
 The `reddit_popular_subreddit` table provides insights into the most popular subreddits on Reddit. As a data analyst or social media marketer, you can explore subreddit-specific details through this table, including the number of active users, post frequency, and community engagement. Utilize it to uncover information about trending topics, user behavior, and the popularity of various interests, which can be valuable for market research and trend analysis.
 
+**Important Notes**
+- Limited to the top 500 results.
+
 ## Examples
 
 ### Top subreddits by popularity

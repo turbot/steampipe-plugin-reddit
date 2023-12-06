@@ -11,6 +11,9 @@ Reddit is a network of communities based on people's interests. Subreddits are t
 
 The `reddit_subreddit_moderator` table provides insights into the moderators of different subreddits on Reddit. As a community manager or researcher, explore moderator-specific details through this table, including their permissions, subreddit affiliations, and associated metadata. Utilize it to understand the distribution of moderation responsibilities, identify active and inactive moderators, and analyze the moderation structure of different subreddits.
 
+**Important Notes**
+- You must specify the `subreddit` in the `where` clause to query this table.
+
 ## Examples
 
 ### List moderators from the subreddit "aws"

@@ -11,6 +11,9 @@ Reddit is a social news aggregation, web content rating, and discussion website.
 
 The `reddit_user` table provides insights into user profiles within Reddit. As a data analyst, explore user-specific details through this table, including their id, name, and created timestamp. Utilize it to uncover information about users, such as their activity patterns, engagement levels, and overall contribution to the platform.
 
+**Important Notes**
+- You must specify the `name` in the `where` clause to query this table.
+
 ## Examples
 
 ### Get a user

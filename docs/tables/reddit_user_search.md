@@ -11,6 +11,9 @@ Reddit is a popular social media platform that allows users to discuss and vote 
 
 The `reddit_user_search` table provides insights into user profiles within Reddit. As a data analyst or a social media marketer, explore user-specific details through this table, including their activities, preferences, and interactions. Utilize it to uncover information about users, such as their post history, comments, and upvotes, to understand user behavior and trends.
 
+**Important Notes**
+- You must specify the `query` in the `where` clause to query this table.
+
 ## Examples
 
 ### Search users called "jane"

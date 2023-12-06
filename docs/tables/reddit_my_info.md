@@ -20,7 +20,5 @@ Explore which Reddit users have the username 'steampipeio'. This is useful for i
 select
   *
 from
-  reddit_user_search
-where
-  query = 'steampipeio';
+  reddit_my_info;
 ```

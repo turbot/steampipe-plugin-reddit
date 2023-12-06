@@ -11,6 +11,10 @@ Reddit is a social news aggregation, web content rating, and discussion website.
 
 The `reddit_subreddit_banned` table provides insights into banned subreddits on Reddit. As a moderator, researcher, or community manager, use this table to understand the enforcement of Reddit's community guidelines and moderation actions. It can be used to analyze patterns in banned content, identify common reasons for subreddit bans, and inform content moderation strategies.
 
+**Important Notes**
+- You must specify the `subreddit` in the `where` clause to query this table.
+- Requires permission to read banned users from the subreddit.
+
 ## Examples
 
 ### List users banned from the subreddit "mysubreddit"

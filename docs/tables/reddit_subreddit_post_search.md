@@ -11,6 +11,9 @@ Reddit is a social news aggregation, web content rating, and discussion platform
 
 The `reddit_subreddit_post_search` table provides insights into Subreddit Posts within Reddit. As a data analyst, explore post-specific details through this table, including content, comments, and associated metadata. Utilize it to uncover information about posts, such as trending topics, popular comments, and user engagement levels.
 
+**Important Notes**
+- You must specify both `subreddit` and `query` in the `where` clause to query this table.
+
 ## Examples
 
 ### Search the "aws" subreddit for "steampipe"
