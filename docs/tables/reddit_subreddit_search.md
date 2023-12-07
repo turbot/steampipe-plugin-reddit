@@ -19,7 +19,21 @@ The `reddit_subreddit_search` table provides insights into Subreddit Search with
 ### Search subreddits with query "aws"
 Explore various subreddits related to 'aws' to understand their popularity based on subscriber count, allowing you to identify the most engaged communities for specific topics.
 
-```sql
+```sql+postgres
+select
+  rank,
+  display_name_prefixed,
+  title,
+  subscribers
+from
+  reddit_subreddit_search
+where
+  query = 'aws'
+order by
+  rank;
+```
+
+```sql+sqlite
 select
   rank,
   display_name_prefixed,

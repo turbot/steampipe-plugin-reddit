@@ -16,7 +16,16 @@ The `reddit_my_info` table provides insights into user information on Reddit. As
 ### Search for the user "steampipeio"
 Explore which Reddit users have the username 'steampipeio'. This is useful for identifying specific users in the Reddit community for potential engagement or analysis.
 
-```sql
+```sql+postgres
+select
+  *
+from
+  reddit_user_search
+where
+  query = 'steampipeio';
+```
+
+```sql+sqlite
 select
   *
 from

@@ -19,7 +19,16 @@ The `reddit_user` table provides insights into user profiles within Reddit. As a
 ### Get a user
 Explore which Reddit user is associated with the username 'steampipeio'. This can help in identifying the user's activity and interactions on the platform.
 
-```sql
+```sql+postgres
+select
+  *
+from
+  reddit_user
+where
+  name = 'steampipeio';
+```
+
+```sql+sqlite
 select
   *
 from

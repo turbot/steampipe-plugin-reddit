@@ -20,7 +20,21 @@ The `reddit_subreddit_banned` table provides insights into banned subreddits on 
 ### List users banned from the subreddit "mysubreddit"
 Determine the individuals who have been banned from a specific subreddit, along with the date of their ban, remaining ban duration, and any notes associated with the ban. This can be useful for subreddit moderators to track and manage user activity and behavior.
 
-```sql
+```sql+postgres
+select
+  name,
+  date,
+  days_left,
+  note
+from
+  reddit_subreddit_banned
+where
+  subreddit = 'mysubreddit'
+order by
+  name;
+```
+
+```sql+sqlite
 select
   name,
   date,

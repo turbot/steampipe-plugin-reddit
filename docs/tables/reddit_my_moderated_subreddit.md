@@ -16,7 +16,18 @@ The `reddit_my_moderated_subreddit` table provides insights into moderated subre
 ### List moderated subreddits
 Discover the segments that have been moderated on Reddit, sorted by their display name. This can help you assess the popularity of these segments based on the number of subscribers, and easily access them via their URLs.
 
-```sql
+```sql+postgres
+select
+  display_name_prefixed,
+  subscribers,
+  urle
+from
+  reddit_my_moderated_subreddit
+order by
+  display_name_prefixed;
+```
+
+```sql+sqlite
 select
   display_name_prefixed,
   subscribers,
@@ -30,7 +41,19 @@ order by
 ### Top 5 moderated subreddits by popularity
 Discover the five most popular subreddits you moderate, ranked by the number of subscribers. This information can be useful to determine where your moderation efforts are having the most impact.
 
-```sql
+```sql+postgres
+select
+  display_name_prefixed,
+  subscribers,
+  url
+from
+  reddit_my_moderated_subreddit
+order by
+  subscribers desc
+limit 5;
+```
+
+```sql+sqlite
 select
   display_name_prefixed,
   subscribers,

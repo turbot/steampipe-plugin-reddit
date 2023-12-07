@@ -16,7 +16,17 @@ The `reddit_my_friend` table provides insights into the 'Friends' feature on Red
 ### List all your friends
 Explore your social connections by listing all your friends in alphabetical order, useful for quickly identifying a specific friend or reviewing your social network.
 
-```sql
+```sql+postgres
+select
+  name,
+  date
+from
+  reddit_my_friend
+order by
+  name;
+```
+
+```sql+sqlite
 select
   name,
   date

@@ -16,7 +16,19 @@ The `reddit_my_post` table provides insights into a user's posts on Reddit. As a
 ### 5 most recent posts
 Discover the latest updates or additions to your Reddit posts. This query can be used to keep track of your most recent posts, helping you to maintain an active and timely presence on the platform.
 
-```sql
+```sql+postgres
+select
+  created_utc,
+  title,
+  url
+from
+  reddit_my_post
+order by
+  created_utc desc
+limit 5;
+```
+
+```sql+sqlite
 select
   created_utc,
   title,
@@ -31,7 +43,20 @@ limit 5;
 ### Top 5 posts by score
 Discover the most popular posts based on their scores to understand what content resonates most with your audience. This can help you tailor future content to increase engagement and upvotes.
 
-```sql
+```sql+postgres
+select
+  score,
+  upvote_ratio,
+  title,
+  url
+from
+  reddit_my_post
+order by
+  score desc
+limit 5;
+```
+
+```sql+sqlite
 select
   score,
   upvote_ratio,
@@ -47,7 +72,7 @@ limit 5;
 ### Posts by subreddit
 Explore which subreddits you are most active in by counting the number of posts you have made in each. This can help you understand your Reddit usage patterns and areas of interest.
 
-```sql
+```sql+postgres
 select
   subreddit_name_prefixed,
   count(*)
@@ -59,10 +84,22 @@ order by
   count desc;
 ```
 
+```sql+sqlite
+select
+  subreddit_name_prefixed,
+  count(*)
+from
+  reddit_my_post
+group by
+  subreddit_name_prefixed
+order by
+  count(*) desc;
+```
+
 ### Posts containing the word "docs"
 Discover the segments that include the word 'docs' within your Reddit posts. This can help you analyze the frequency and context of discussions about documentation, providing insights into user engagement and potential areas of improvement.
 
-```sql
+```sql+postgres
 select
   created_utc,
   title,
@@ -72,6 +109,20 @@ from
   reddit_my_post
 where
   selftext ilike '%docs%'
+order by
+  created_utc;
+```
+
+```sql+sqlite
+select
+  created_utc,
+  title,
+  url,
+  selftext
+from
+  reddit_my_post
+where
+  selftext like '%docs%'
 order by
   created_utc;
 ```

@@ -19,7 +19,19 @@ The `reddit_popular_subreddit` table provides insights into the most popular sub
 ### Top subreddits by popularity
 Discover the most popular subreddits based on their subscriber count, which allows you to understand the trending topics and areas of interest among Reddit users.
 
-```sql
+```sql+postgres
+select
+  rank,
+  display_name_prefixed,
+  title,
+  subscribers
+from
+  reddit_popular_subreddit
+order by
+  rank;
+```
+
+```sql+sqlite
 select
   rank,
   display_name_prefixed,

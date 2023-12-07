@@ -19,7 +19,19 @@ The `reddit_subreddit_moderator` table provides insights into the moderators of 
 ### List moderators from the subreddit "aws"
 Explore which users have moderation permissions in a specific subreddit to understand the distribution of moderation roles and responsibilities.
 
-```sql
+```sql+postgres
+select
+  name,
+  mod_permissions
+from
+  reddit_subreddit_moderator
+where
+  subreddit = 'aws'
+order by
+  name;
+```
+
+```sql+sqlite
 select
   name,
   mod_permissions
@@ -34,7 +46,7 @@ order by
 ### List moderators with "all" permission
 Explore which moderators have comprehensive permissions within a specific online community, such as 'aws', to better manage user roles and access rights. This can be useful for assessing user privileges and maintaining security protocols.
 
-```sql
+```sql+postgres
 select
   name,
   mod_permissions
@@ -43,6 +55,19 @@ from
 where
   subreddit = 'aws'
   and mod_permissions ? 'all'
+order by
+  name;
+```
+
+```sql+sqlite
+select
+  name,
+  mod_permissions
+from
+  reddit_subreddit_moderator
+where
+  subreddit = 'aws'
+  and json_extract(mod_permissions, '$.all') is not null
 order by
   name;
 ```

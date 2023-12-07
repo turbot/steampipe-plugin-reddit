@@ -16,7 +16,18 @@ The `reddit_my_subscribed_subreddit` table provides insights into the subreddits
 ### List subscribed subreddits
 Explore your Reddit subscriptions to understand the popularity and reach of your subscribed subreddits. This can help identify which communities are largest and most active, providing insight into where your interests align with larger Reddit trends.
 
-```sql
+```sql+postgres
+select
+  display_name_prefixed,
+  subscribers,
+  url
+from
+  reddit_my_subscribed_subreddit
+order by
+  display_name_prefixed;
+```
+
+```sql+sqlite
 select
   display_name_prefixed,
   subscribers,
@@ -30,7 +41,19 @@ order by
 ### Top 5 subscribed subreddits by popularity
 Discover the segments that are most popular among your subscribed subreddits. This helps in identifying the top 5 subreddits you are subscribed to, based on the number of subscribers, for a better understanding of popular trends.
 
-```sql
+```sql+postgres
+select
+  display_name_prefixed,
+  subscribers,
+  url
+from
+  reddit_my_subscribed_subreddit
+order by
+  subscribers desc
+limit 5;
+```
+
+```sql+sqlite
 select
   display_name_prefixed,
   subscribers,

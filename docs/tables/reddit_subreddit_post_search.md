@@ -19,7 +19,23 @@ The `reddit_subreddit_post_search` table provides insights into Subreddit Posts 
 ### Search the "aws" subreddit for "steampipe"
 Explore the popularity and relevance of Steampipe within the AWS community on Reddit. This query helps identify posts that mention 'steampipe', allowing users to understand its significance and usage trends among AWS users.
 
-```sql
+```sql+postgres
+select
+  rank,
+  title,
+  created_utc,
+  score,
+  url
+from
+  reddit_subreddit_post_search
+where
+  subreddit = 'aws'
+  and query = 'steampipe'
+order by
+  rank;
+```
+
+```sql+sqlite
 select
   rank,
   title,

@@ -19,7 +19,18 @@ The `reddit_user_search` table provides insights into user profiles within Reddi
 ### Search users called "jane"
 Discover the segments that contain users named 'Jane' on Reddit, allowing you to analyze user data and trends associated with this name. This is particularly useful for market research, user analysis, and trend prediction.
 
-```sql
+```sql+postgres
+select
+  *
+from
+  reddit_user_search
+where
+  query = 'jane'
+order by
+  rank;
+```
+
+```sql+sqlite
 select
   *
 from

@@ -16,7 +16,17 @@ The `reddit_my_blocked` table provides insights into blocked users within Reddit
 ### List all users you have blocked
 Discover the individuals you have chosen to block on Reddit and the dates these actions took place, allowing you to recall and manage your personal online interactions. This can be beneficial in maintaining a positive and controlled social media environment.
 
-```sql
+```sql+postgres
+select
+  name,
+  date
+from
+  reddit_my_blocked
+order by
+  name;
+```
+
+```sql+sqlite
 select
   name,
   date
@@ -29,7 +39,18 @@ order by
 ### Last 5 users you blocked
 Explore the most recent activities in your Reddit account by identifying the last five users you've blocked. This helps maintain a record of your interactions and monitor any recurring issues with specific users.
 
-```sql
+```sql+postgres
+select
+  name,
+  date
+from
+  reddit_my_blocked
+order by
+  date desc
+limit 5;
+```
+
+```sql+sqlite
 select
   name,
   date
