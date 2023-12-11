@@ -84,7 +84,4 @@ Environment variables are also available as an alternate configuration method:
 * `REDDIT_USERNAME`
 * `REDDIT_PASSWORD`
 
-## Get involved
 
-* Open source: https://github.com/turbot/steampipe-plugin-reddit
-* Community: [Join #steampipe on Slack →](https://turbot.com/community/join)
