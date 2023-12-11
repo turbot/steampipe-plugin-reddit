@@ -8,6 +8,7 @@ name: reddit
 description: Steampipe plugin to query Reddit users, posts, votes and more.
 og_description: Query Reddit with SQL! Open source CLI. No DB required.
 og_image: "/images/plugins/turbot/reddit-social-graphic.png"
+engines: ["steampipe", "sqlite", "postgres", "export"]
 ---
 
 # Reddit + Steampipe
