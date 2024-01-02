@@ -7,7 +7,7 @@ When querying the `reddit_my_saved_post` or `reddit_my_saved_comment` tables, be
 
 ## Examples
 
-### 5 most recent comments
+### List five most recent comments
 
 ```sql
 select
@@ -21,7 +21,7 @@ order by
 limit 5;
 ```
 
-### Top 5 comments by score
+### List top five comments by score
 
 ```sql
 select
@@ -36,7 +36,7 @@ order by
 limit 5;
 ```
 
-### Comments by subreddit
+### List comments by subreddit
 
 ```sql
 select
@@ -50,7 +50,7 @@ order by
   count desc;
 ```
 
-### Comments containing the word "docs"
+### List comments that contain the word "docs"
 
 ```sql
 select

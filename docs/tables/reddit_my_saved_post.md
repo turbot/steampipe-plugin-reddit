@@ -7,7 +7,7 @@ When querying the `reddit_my_saved_post` or `reddit_my_saved_comment` tables, be
 
 ## Examples
 
-### 5 most recent posts
+### List five most recent posts
 
 ```sql
 select
@@ -21,7 +21,7 @@ order by
 limit 5;
 ```
 
-### Top 5 posts by score
+### List top five posts by score
 
 ```sql
 select
@@ -36,7 +36,7 @@ order by
 limit 5;
 ```
 
-### Posts by subreddit
+### List posts by subreddit
 
 ```sql
 select
@@ -50,7 +50,7 @@ order by
   count desc;
 ```
 
-### Posts containing the word "docs"
+### List posts that contain the word "docs"
 
 ```sql
 select
