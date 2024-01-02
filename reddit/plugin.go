@@ -23,6 +23,8 @@ func Plugin(ctx context.Context) *plugin.Plugin {
 			"reddit_my_friend":               tableRedditMyFriend(ctx),
 			"reddit_my_info":                 tableRedditMyInfo(ctx),
 			"reddit_my_post":                 tableRedditMyPost(ctx),
+			"reddit_my_saved_post":           tableRedditMySavedPost(ctx),
+			"reddit_my_saved_comment":        tableRedditMySavedComment(ctx),
 			"reddit_my_subscribed_subreddit": tableRedditMySubscribedSubreddit(ctx),
 			"reddit_my_moderated_subreddit":  tableRedditMyModeratedSubreddit(ctx),
 			"reddit_popular_subreddit":       tableRedditPopularSubreddit(ctx),
