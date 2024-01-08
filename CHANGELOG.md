@@ -1,3 +1,11 @@
+## v0.5.0 [2024-01-08]
+
+_What's new?_
+
+- New tables added
+  - [reddit_my_saved_post](https://hub.steampipe.io/plugins/turbot/reddit/tables/reddit_my_saved_post) (Thanks [@mkell43](https://github.com/mkell43) for the contribution!)
+  - [reddit_my_saved_comment](https://hub.steampipe.io/plugins/turbot/reddit/tables/reddit_my_saved_comment) (Thanks [@mkell43](https://github.com/mkell43) for the contribution!)
+
 ## v0.4.0 [2023-12-12]
 
 _What's new?_
