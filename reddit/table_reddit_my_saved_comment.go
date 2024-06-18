@@ -17,7 +17,7 @@ func tableRedditMySavedComment(ctx context.Context) *plugin.Table {
 		List: &plugin.ListConfig{
 			Hydrate: listMySavedComments,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "rank", Type: proto.ColumnType_INT, Description: "Rank of the comment among the result rows, use for sorting."},
 			{Name: "id", Type: proto.ColumnType_STRING, Transform: transform.FromField("Comment.ID"), Description: "ID of the comment."},
@@ -50,7 +50,7 @@ func tableRedditMySavedComment(ctx context.Context) *plugin.Table {
 			{Name: "can_gild", Type: proto.ColumnType_BOOL, Transform: transform.FromField("Comment.CanGild"), Description: "Indicates whether the comment can be gilded or not."},
 			{Name: "nsfw", Type: proto.ColumnType_BOOL, Transform: transform.FromField("Comment.NSFW"), Description: "True if the comment is not safe for work (over 18)."},
 			{Name: "comment_replies", Type: proto.ColumnType_JSON, Transform: transform.FromField("Comment.Replies.Comments"), Description: "Replies to the comment."},
-		},
+		}),
 	}
 }
 
@@ -68,9 +68,12 @@ func listMySavedComments(ctx context.Context, d *plugin.QueryData, h *plugin.Hyd
 		return nil, err
 	}
 
-	authUserCached := plugin.HydrateFunc(getRedditAuthenticatedUser).WithCache()
-	commonData, _ := authUserCached(ctx, d, h)
-	authUser := commonData.(string)
+	authUserCached, err := getRedditAuthenticatedUser(ctx, d, h)
+	if err != nil {
+		return nil, err
+	}
+
+	authUser := authUserCached.(string)
 
 	if authUser != "" {
 		conn.Username = authUser

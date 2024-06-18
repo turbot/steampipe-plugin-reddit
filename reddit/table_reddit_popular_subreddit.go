@@ -17,7 +17,7 @@ func tableRedditPopularSubreddit(ctx context.Context) *plugin.Table {
 		List: &plugin.ListConfig{
 			Hydrate: listPopularSubreddit,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "rank", Type: proto.ColumnType_INT, Description: "Rank of the subreddit among the result rows, use for sorting."},
 			{Name: "display_name_prefixed", Type: proto.ColumnType_STRING, Transform: transform.FromField("Subreddit.NamePrefixed"), Description: "Prefixed name of the subreddit, e.g. /r/aws."},
@@ -37,7 +37,7 @@ func tableRedditPopularSubreddit(ctx context.Context) *plugin.Table {
 			{Name: "user_has_favorited", Type: proto.ColumnType_BOOL, Transform: transform.FromField("Subreddit.Favorite"), Description: "True if the caller has favorited the subreddit."},
 			{Name: "user_is_moderator", Type: proto.ColumnType_BOOL, Transform: transform.FromField("Subreddit.UserIsMod"), Description: "True if the caller is a moderator of the subreddit."},
 			{Name: "user_is_subscriber", Type: proto.ColumnType_BOOL, Transform: transform.FromField("Subreddit.Subscribed"), Description: "True if the caller is a subscriber of the subreddit."},
-		},
+		}),
 	}
 }
 

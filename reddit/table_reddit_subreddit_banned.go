@@ -18,7 +18,7 @@ func tableRedditSubredditBanned(ctx context.Context) *plugin.Table {
 			Hydrate:    listSubredditBanned,
 			KeyColumns: plugin.SingleColumn("subreddit"),
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "name", Type: proto.ColumnType_STRING, Transform: transform.FromField("Relationship.User"), Description: "Name of the banned user."},
 			{Name: "date", Type: proto.ColumnType_TIMESTAMP, Transform: transform.FromField("Relationship.Created").Transform(timeToRfc3339), Description: "Time when the subreddit was created."},
@@ -28,7 +28,7 @@ func tableRedditSubredditBanned(ctx context.Context) *plugin.Table {
 			{Name: "id", Type: proto.ColumnType_STRING, Transform: transform.FromField("Relationship.UserID"), Description: "ID of the banned user."},
 			{Name: "rel_id", Type: proto.ColumnType_STRING, Transform: transform.FromField("Relationship.ID"), Description: "ID of the ban."},
 			{Name: "subreddit", Type: proto.ColumnType_STRING, Transform: transform.FromQual("subreddit"), Description: "Subreddit for the ban."},
-		},
+		}),
 	}
 }
 

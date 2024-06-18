@@ -21,7 +21,7 @@ func tableRedditUserSearch(ctx context.Context) *plugin.Table {
 				{Name: "query", CacheMatch: "exact"},
 			},
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "rank", Type: proto.ColumnType_INT, Description: "Rank of the user among the result rows, use for sorting."},
 			{Name: "name", Type: proto.ColumnType_STRING, Transform: transform.FromField("User.Name"), Description: "Name of the user."},
@@ -36,7 +36,7 @@ func tableRedditUserSearch(ctx context.Context) *plugin.Table {
 			{Name: "is_suspended", Type: proto.ColumnType_BOOL, Transform: transform.FromField("User.IsSuspended"), Description: "True if the user has been suspended."},
 			{Name: "over_18", Type: proto.ColumnType_BOOL, Transform: transform.FromField("User.NSFW"), Description: "True if the user is over 18."},
 			{Name: "query", Type: proto.ColumnType_STRING, Transform: transform.FromQual("query"), Description: "Search query string."},
-		},
+		}),
 	}
 }
 

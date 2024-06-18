@@ -17,7 +17,7 @@ func tableRedditSubredditModerator(ctx context.Context) *plugin.Table {
 			Hydrate:    listSubredditModerator,
 			KeyColumns: plugin.SingleColumn("subreddit"),
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "name", Type: proto.ColumnType_STRING, Transform: transform.FromField("Relationship.User"), Description: "Name of the moderator user."},
 			{Name: "mod_permissions", Type: proto.ColumnType_JSON, Description: "Moderation permissions granted to the user."},
@@ -26,7 +26,7 @@ func tableRedditSubredditModerator(ctx context.Context) *plugin.Table {
 			{Name: "id", Type: proto.ColumnType_STRING, Transform: transform.FromField("Relationship.UserID"), Description: "ID of the moderator user."},
 			{Name: "rel_id", Type: proto.ColumnType_STRING, Transform: transform.FromField("Relationship.ID"), Description: "ID of the ban."},
 			{Name: "subreddit", Type: proto.ColumnType_STRING, Transform: transform.FromQual("subreddit"), Description: "Subreddit for this moderator."},
-		},
+		}),
 	}
 }
 

@@ -9,6 +9,7 @@ import (
 
 	"github.com/vartanbeno/go-reddit/v2/reddit"
 
+	"github.com/turbot/steampipe-plugin-sdk/v5/memoize"
 	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
 	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
 )
@@ -84,13 +85,21 @@ func timeToRfc3339(ctx context.Context, d *transform.TransformData) (interface{}
 	return nil, nil
 }
 
-func getRedditAuthenticatedUser(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) (interface{}, error) {
+var getRedditAuthenticatedUserMemoize = plugin.HydrateFunc(getRedditAuthenticatedUserUncached).Memoize(memoize.WithCacheKeyFunction(getRedditAuthenticatedUserCacheKey))
 
-	// Load connection from cache, which preserves throttling protection etc
-	cacheKey := "reddit.authenticated_user"
-	if cachedData, ok := d.ConnectionManager.Cache.Get(cacheKey); ok {
-		return cachedData.(string), nil
-	}
+// declare a wrapper hydrate function to call the memoized function
+// - this is required when a memoized function is used for a column definition
+func getRedditAuthenticatedUser(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (interface{}, error) {
+	return getRedditAuthenticatedUserMemoize(ctx, d, h)
+}
+
+// Build a cache key for the call to getOrganizationIdCacheKey.
+func getRedditAuthenticatedUserCacheKey(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (interface{}, error) {
+	key := "reddit.authenticated_user"
+	return key, nil
+}
+
+func getRedditAuthenticatedUserUncached(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) (interface{}, error) {
 
 	conn, err := connect(ctx, d)
 	if err != nil {
@@ -102,8 +111,6 @@ func getRedditAuthenticatedUser(ctx context.Context, d *plugin.QueryData, _ *plu
 		return nil, err
 	}
 	if resp.StatusCode >= 200 && resp.StatusCode < 400 {
-		// save to extension cache
-		d.ConnectionManager.Cache.Set(cacheKey, user.Name)
 
 		return user.Name, nil
 	}
