@@ -106,13 +106,9 @@ func getRedditAuthenticatedUserUncached(ctx context.Context, d *plugin.QueryData
 		plugin.Logger(ctx).Error("getRedditAuthenticatedUser", "connection_error", err)
 		return nil, err
 	}
-	user, resp, err := conn.Account.Info(ctx)
-	if err != nil {
-		return nil, err
-	}
-	if resp.StatusCode >= 200 && resp.StatusCode < 400 {
 
-		return user.Name, nil
+	if conn != nil {
+		return conn.Username, nil
 	}
 
 	return nil, nil

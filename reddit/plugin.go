@@ -15,7 +15,7 @@ func Plugin(ctx context.Context) *plugin.Plugin {
 		},
 		ConnectionKeyColumns: []plugin.ConnectionKeyColumn{
 			{
-				Name:    "logged_in_username",
+				Name:    "username",
 				Hydrate: getRedditAuthenticatedUser,
 			},
 		},

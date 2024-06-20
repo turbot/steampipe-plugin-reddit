@@ -9,7 +9,7 @@ import (
 func commonColumns(c []*plugin.Column) []*plugin.Column {
 	return append([]*plugin.Column{
 		{
-			Name:        "logged_in_username",
+			Name:        "username",
 			Type:        proto.ColumnType_STRING,
 			Hydrate:     getRedditAuthenticatedUser,
 			Description: "The authorized username.",
