@@ -17,7 +17,7 @@ func tableRedditMySavedPost(ctx context.Context) *plugin.Table {
 		List: &plugin.ListConfig{
 			Hydrate: listMySavedPosts,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "rank", Type: proto.ColumnType_INT, Description: "Rank of the post among the result rows, use for sorting."},
 			{Name: "id", Type: proto.ColumnType_STRING, Transform: transform.FromField("Post.ID"), Description: "ID of the post."},
@@ -44,7 +44,7 @@ func tableRedditMySavedPost(ctx context.Context) *plugin.Table {
 			{Name: "is_self_post", Type: proto.ColumnType_BOOL, Transform: transform.FromField("Post.IsSelfPost"), Description: ""},
 			{Name: "saved", Type: proto.ColumnType_BOOL, Transform: transform.FromField("Post.Saved"), Description: "True if the post has been saved."},
 			{Name: "stickied", Type: proto.ColumnType_BOOL, Transform: transform.FromField("Post.Stickied"), Description: "True if the post has been stickied."},
-		},
+		}),
 	}
 }
 
@@ -62,9 +62,12 @@ func listMySavedPosts(ctx context.Context, d *plugin.QueryData, h *plugin.Hydrat
 		return nil, err
 	}
 
-	authUserCached := plugin.HydrateFunc(getRedditAuthenticatedUser).WithCache()
-	commonData, _ := authUserCached(ctx, d, h)
-	authUser := commonData.(string)
+	authUserCached, err := getRedditAuthenticatedUser(ctx, d, h)
+	if err != nil {
+		return nil, err
+	}
+
+	authUser := authUserCached.(string)
 
 	if authUser != "" {
 		conn.Username = authUser

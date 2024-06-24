@@ -17,7 +17,7 @@ func tableRedditMySubscribedSubreddit(ctx context.Context) *plugin.Table {
 		List: &plugin.ListConfig{
 			Hydrate: listMySubscribedSubreddit,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "display_name_prefixed", Type: proto.ColumnType_STRING, Description: "Prefixed name of the subreddit, e.g. /r/aws."},
 			{Name: "subscribers", Type: proto.ColumnType_INT, Transform: transform.FromField("Subscribers"), Description: "Number of subscribers to the subreddit."},
@@ -36,7 +36,7 @@ func tableRedditMySubscribedSubreddit(ctx context.Context) *plugin.Table {
 			{Name: "user_has_favorited", Type: proto.ColumnType_BOOL, Description: "True if the caller has favorited the subreddit."},
 			{Name: "user_is_moderator", Type: proto.ColumnType_BOOL, Description: "True if the caller is a moderator of the subreddit."},
 			{Name: "user_is_subscriber", Type: proto.ColumnType_BOOL, Description: "True if the caller is a subscriber of the subreddit."},
-		},
+		}),
 	}
 }
 

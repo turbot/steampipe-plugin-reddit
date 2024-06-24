@@ -15,13 +15,13 @@ func tableRedditMyFriend(ctx context.Context) *plugin.Table {
 		List: &plugin.ListConfig{
 			Hydrate: listMyFriend,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "rel_id", Type: proto.ColumnType_STRING, Description: "ID of the relationship."},
 			{Name: "name", Type: proto.ColumnType_STRING, Description: "Name of the friend."},
 			{Name: "id", Type: proto.ColumnType_STRING, Description: "ID of the friend."},
 			{Name: "date", Type: proto.ColumnType_STRING, Transform: transform.FromField("Created").Transform(timeToRfc3339), Description: "Time when the relationship was created."},
-		},
+		}),
 	}
 }
 

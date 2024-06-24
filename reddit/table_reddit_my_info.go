@@ -15,7 +15,7 @@ func tableRedditMyInfo(ctx context.Context) *plugin.Table {
 		List: &plugin.ListConfig{
 			Hydrate: listMyInfo,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "id", Type: proto.ColumnType_STRING, Description: "ID of the user."},
 			{Name: "name", Type: proto.ColumnType_STRING, Description: "Name of the user."},
@@ -27,7 +27,7 @@ func tableRedditMyInfo(ctx context.Context) *plugin.Table {
 			{Name: "has_verified_email", Type: proto.ColumnType_BOOL, Description: "True if the user email has been verified."},
 			{Name: "over_18", Type: proto.ColumnType_BOOL, Description: "True if the user is over 18."},
 			{Name: "is_suspended", Type: proto.ColumnType_BOOL, Description: "True if the user has been suspended."},
-		},
+		}),
 	}
 }
 

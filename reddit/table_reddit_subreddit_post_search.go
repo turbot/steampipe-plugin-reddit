@@ -22,7 +22,7 @@ func tableRedditSubredditPostSearch(ctx context.Context) *plugin.Table {
 				{Name: "query", CacheMatch: "exact"},
 			},
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "rank", Type: proto.ColumnType_INT, Description: "Rank of the post among the result rows, use for sorting."},
 			{Name: "title", Type: proto.ColumnType_STRING, Transform: transform.FromField("Post.Title"), Description: "Title of the post."},
@@ -51,7 +51,7 @@ func tableRedditSubredditPostSearch(ctx context.Context) *plugin.Table {
 			{Name: "subreddit_name_prefixed", Type: proto.ColumnType_STRING, Transform: transform.FromField("Post.SubredditNamePrefixed"), Description: "Prefixed name of the subreddit, e.g. /r/aws."},
 			{Name: "subreddit_subscribers", Type: proto.ColumnType_INT, Transform: transform.FromField("Post.SubredditSubscribers"), Description: "Number of subscribers to the subreddit."},
 			{Name: "upvote_ratio", Type: proto.ColumnType_DOUBLE, Transform: transform.FromField("Post.UpvoteRatio"), Description: "Upvote ratio of the post."},
-		},
+		}),
 	}
 }
 

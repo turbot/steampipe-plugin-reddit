@@ -15,13 +15,13 @@ func tableRedditMyBlocked(ctx context.Context) *plugin.Table {
 		List: &plugin.ListConfig{
 			Hydrate: listMyBlocked,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "rel_id", Type: proto.ColumnType_STRING, Description: "ID of the relationship."},
 			{Name: "name", Type: proto.ColumnType_STRING, Description: "Name of the blocked user."},
 			{Name: "id", Type: proto.ColumnType_STRING, Description: "ID of the blocked user."},
 			{Name: "date", Type: proto.ColumnType_STRING, Transform: transform.FromField("Created").Transform(timeToRfc3339), Description: "Time when the block was created."},
-		},
+		}),
 	}
 }
 
