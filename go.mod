@@ -1,13 +1,13 @@
 module github.com/turbot/steampipe-plugin-reddit
 
-go 1.21.0
+go 1.22.4
 
-toolchain go1.21.1
+toolchain go1.22.6
 
 replace github.com/vartanbeno/go-reddit/v2 => github.com/abhiturbot/go-reddit/v2 v2.0.0-20220917030010-f0fe7d8ac15c
 
 require (
-	github.com/turbot/steampipe-plugin-sdk/v5 v5.10.1
+	github.com/turbot/steampipe-plugin-sdk/v5 v5.10.3
 	github.com/vartanbeno/go-reddit/v2 v2.0.1
 )
 
