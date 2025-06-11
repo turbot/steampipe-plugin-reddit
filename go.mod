@@ -7,7 +7,7 @@ toolchain go1.23.2
 replace github.com/vartanbeno/go-reddit/v2 => github.com/abhiturbot/go-reddit/v2 v2.0.0-20220917030010-f0fe7d8ac15c
 
 require (
-	github.com/turbot/steampipe-plugin-sdk/v5 v5.11.6
+	github.com/turbot/steampipe-plugin-sdk/v5 v5.11.7
 	github.com/vartanbeno/go-reddit/v2 v2.0.1
 )
 
