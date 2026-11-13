@@ -9,16 +9,16 @@ import (
 
 	"github.com/vartanbeno/go-reddit/v2/reddit"
 
-	"github.com/turbot/steampipe-plugin-sdk/v5/memoize"
-	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
-	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
+	"github.com/turbot/steampipe-plugin-sdk/v6/memoize"
+	"github.com/turbot/steampipe-plugin-sdk/v6/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v6/plugin/transform"
 )
 
 func connect(ctx context.Context, d *plugin.QueryData) (*reddit.Client, error) {
 
 	// Load connection from cache, which preserves throttling protection etc
 	cacheKey := "reddit"
-	if cachedData, ok := d.ConnectionManager.Cache.Get(cacheKey); ok {
+	if cachedData, ok := d.ConnectionCache.Get(ctx, cacheKey); ok {
 		return cachedData.(*reddit.Client), nil
 	}
 
@@ -66,12 +66,12 @@ func connect(ctx context.Context, d *plugin.QueryData) (*reddit.Client, error) {
 	}
 
 	// Save to cache
-	d.ConnectionManager.Cache.Set(cacheKey, client)
+	_ = d.ConnectionCache.Set(ctx, cacheKey, client)
 
 	return client, nil
 }
 
-func isNotFoundError(err error) bool {
+func isNotFoundError(_ context.Context, _ *plugin.QueryData, _ *plugin.HydrateData, err error) bool {
 	return strings.Contains(err.Error(), "Resource not found")
 }
 

@@ -5,9 +5,9 @@ import (
 
 	"github.com/vartanbeno/go-reddit/v2/reddit"
 
-	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
-	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
-	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
+	"github.com/turbot/steampipe-plugin-sdk/v6/grpc/proto"
+	"github.com/turbot/steampipe-plugin-sdk/v6/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v6/plugin/transform"
 )
 
 func tableRedditPopularSubreddit(ctx context.Context) *plugin.Table {
@@ -66,8 +66,8 @@ func listPopularSubreddit(ctx context.Context, d *plugin.QueryData, _ *plugin.Hy
 	limit := d.QueryContext.Limit
 	if limit != nil {
 		iLimit := int(*limit)
-		if iLimit < opts.ListOptions.Limit {
-			opts.ListOptions.Limit = iLimit
+		if iLimit < opts.Limit {
+			opts.Limit = iLimit
 		}
 	}
 

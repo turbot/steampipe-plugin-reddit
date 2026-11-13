@@ -1,7 +1,7 @@
 package reddit
 
 import (
-	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v6/plugin"
 )
 
 type redditConfig struct {
@@ -18,9 +18,9 @@ func ConfigInstance() interface{} {
 
 // GetConfig :: retrieve and cast connection config from query data
 func GetConfig(connection *plugin.Connection) redditConfig {
-	if connection == nil || connection.Config == nil {
+	if connection == nil || connection.GetConfig() == nil {
 		return redditConfig{}
 	}
-	config, _ := connection.Config.(redditConfig)
+	config, _ := connection.GetConfig().(redditConfig)
 	return config
 }
